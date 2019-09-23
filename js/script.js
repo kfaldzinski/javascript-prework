@@ -35,12 +35,43 @@ function displayResult(playerMove, computerMove) {
   }
   printMessage('Zagrałem ' + computerMove + ', a Ty ' + playerMove);
 }
-playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
-console.log('wybór ruchu gracza to: ' + playerInput);
-playerMove = getMoveName(playerInput);
-console.log('ruch gracza to: ' + playerMove);
-randomNumber = Math.floor(Math.random() * 3 + 1);
-console.log('wylosowana liczba to: ' + randomNumber);
-computerMove = getMoveName(randomNumber);
-console.log('ruch komputera to: ' + computerMove);
-displayResult(playerMove, computerMove);
+var buttonRock, buttonPaper, buttonScissors;
+// tu będą wymienione pozostałe zmienne guzików, np. buttonRock
+
+buttonRock = document.getElementById('button-rock');
+buttonPaper = document.getElementById('button-paper');
+buttonScissors = document.getElementById('button-scissors');
+// tu będą kolejne linie kodu, w których do zmiennych będą przypisane elementy znalezione po id
+
+function buttonClicked(argButtonName){
+    clearMessages();
+    console.log(argButtonName + ' został kliknięty');
+
+    // tu będą kolejne powiązania guzików z funkcją buttonClicked
+    // (każda z innym argumentem)
+    playerMove = argButtonName;
+    /*playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+    console.log('wybór ruchu gracza to: ' + playerInput);
+    playerMove = getMoveName(playerInput);*/
+    console.log('ruch gracza to: ' + playerMove);
+    randomNumber = Math.floor(Math.random() * 3 + 1);
+    console.log('wylosowana liczba to: ' + randomNumber);
+    computerMove = getMoveName(randomNumber);
+    console.log('ruch komputera to: ' + computerMove);
+    displayResult(playerMove, computerMove);
+
+
+    // tu znajdzie się cała dotychczasowa zawartość pliku js/script.js
+    // czyli efekt ćwiczenia z poprzedniego submodułu
+    // z drobną zmianą dot. zmiennej playerMove (wspomnieliśmy o tym powyżej)
+}
+
+buttonRock.addEventListener('click', function(){
+    buttonClicked('kamień')
+});
+buttonPaper.addEventListener('click', function(){
+    buttonClicked('papier')
+});
+buttonScissors.addEventListener('click', function(){
+    buttonClicked('nożyce')
+});
